@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ software.name }} - {{ t('title') }}{% endblock %}
+
+{% block content %}
+{% from 'icons.html' import render_icon %}
+
+<div class="main-wrapper" style="margin-top: 30px;">
+    <!-- Breadcrumb -->
+    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+        <a href="/">{{ t('home') }}</a> &rsaquo; 
+        <a href="/?category={{ software.category }}">{{ CATEGORIES[software.category] }}</a> &rsaquo; 
+        <span style="color: var(--text-main);">{{ software.name }}</span>
+    </div>
+
+    <div class="detail-grid">
+        <!-- Cột chính bên trái: Chi tiết phần mềm -->
+        <div class="detail-main-card">
+            <div class="detail-header">
+                <div class="detail-icon">
+                    {{ render_icon(software.icon_type) }}
+                </div>
+                <div class="detail-title-block">
+                    <h1>{{ software.name }}</h1>
+                    <div style="color: var(--text-muted);">{{ t('developer_label') }}: <strong style="color: var(--text-main);">{{ software.developer }}</strong></div>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <p class="hero-subtitle" style="text-align: left; font-size: 18px; line-height: 1.6; border-left: 4px solid var(--primary-color); padding-left: 16px; margin-bottom: 30px;">
+                    {{ t_sw(software, 'description') }}
+                </p>
+                
+                <h3>{{ t('detail_intro') }}</h3>
+                <p>
+                    {% set detail_desc = t_sw(software, 'detail_description') %}
+                    {{ detail_desc if detail_desc else ('Detailed content is being updated...' if current_lang == 'en' else 'Đang cập nhật nội dung chi tiết...') }}
+                </p>
+                
+                <h3>{{ t('detail_guide') }}</h3>
+                <p>{{ t('detail_guide_p') }}</p>
+                <ol style="margin-left: 20px; margin-bottom: 20px; color: var(--text-muted);">
+                    <li style="margin-bottom: 8px;">{{ t('detail_step1') }}</li>
+                    <li style="margin-bottom: 8px;">{{ t('detail_step2')|safe }}</li>
+                    <li style="margin-bottom: 8px;">{{ t('detail_step3')|safe }}</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cột thông tin kỹ thuật bên phải -->
+        <div class="detail-sidebar-card">
+            <h4 class="sidebar-heading">{{ t('tech_info') }}</h4>
+            
+            <ul class="info-list">
+                <li class="info-row">
+                    <span class="info-label">{{ t('version') }}:</span>
+                    <span class="info-value">{{ software.version }}</span>
+                </li>
+                <li class="info-row">
+                    <span class="info-label">{{ t('size') }}:</span>
+                    <span class="info-value detail-file-size">{{ software.file_size }}</span>
+                </li>
+                <li class="info-row">
+                    <span class="info-label">{{ t('os') }}:</span>
+                    <span class="info-value">Windows 10/11 (x64)</span>
+                </li>
+                <li class="info-row">
+                    <span class="info-label">{{ t('license') }}:</span>
+                    <span class="info-value" style="color: var(--accent-color);">{{ t('free') }}</span>
+                </li>
+                <li class="info-row">
+                    <span class="info-label">{{ t('downloads') }}:</span>
+                    <span class="info-value download-count-val">{{ software.download_count }}</span>
+                </li>
+            </ul>
+
+            {% if software.versions %}
+            <div class="version-select-box">
+                <label for="versionSelect" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 600;">{{ t('select_version') }}</label>
+                <select id="versionSelect" class="styled-select" data-slug="{{ software.slug }}">
+                    {% for v in software.versions %}
+                        <option value="{{ v.version }}" data-size="{{ v.file_size }}">v{{ v.version }} ({{ v.file_size }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+
+            <!-- Nút Tải Lớn -->
+            <a href="{{ url_for('download', slug=software.slug) }}" 
+               class="download-btn" 
+               data-app-id="{{ software.id }}"
+               style="width: 100%; justify-content: center; margin-top: 24px; padding: 14px;">
+                <span class="btn-txt">{{ t('download_btn_detail') }}</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Phần gợi ý liên quan -->
+    {% if related %}
+        <section class="related-section">
+            <h3 class="related-title">{{ t('similar_apps') }}</h3>
+            <div class="app-grid">
+                {% for sw in related %}
+                    <div class="app-card" data-category="{{ sw.category }}">
+                        <div>
+                            <div class="app-card-top">
+                                <div class="app-icon">
+                                    {{ render_icon(sw.icon_type) }}
+                                </div>
+                                <div class="app-info-header">
+                                    <h3 class="app-name">
+                                        <a href="{{ url_for('detail', slug=sw.slug) }}">{{ sw.name }}</a>
+                                    </h3>
+                                    <div class="app-developer">{{ sw.developer }}</div>
+                                    <span class="app-version">v{{ sw.version }}</span>
+                                </div>
+                            </div>
+                            <p class="app-description">{{ t_sw(sw, 'description') }}</p>
+                        </div>
+
+                        <div class="app-card-bottom">
+                            <div class="app-metadata">
+                                <span>{{ t('size') }}: <strong>{{ sw.file_size }}</strong></span>
+                                <span>{{ t('downloads') }}: <strong class="download-count-val">{{ sw.download_count }}</strong></span>
+                            </div>
+                            
+                            <a href="{{ url_for('download', slug=sw.slug) }}" 
+                               class="download-btn" 
+                               data-app-id="{{ sw.id }}">
+                                <span class="btn-txt">{{ t('download_btn') }}</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+</div>
+{% endblock %}

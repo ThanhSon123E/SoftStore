@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ t('error_500_title') }}{% endblock %}
+
+{% block content %}
+<div class="main-wrapper" style="margin-top: 50px;">
+    <div class="empty-state" style="padding: 80px 20px;">
+        <div class="empty-state-icon" style="font-size: 72px; margin-bottom: 20px;">⚠️</div>
+        <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 800; margin-bottom: 12px; color: var(--primary-color);">{{ t('error_500_h2') }}</h2>
+        <p style="color: var(--text-muted); font-size: 15px; max-width: 500px; margin: 0 auto 30px auto; line-height: 1.6;">
+            {{ t('error_500_desc') }}
+        </p>
+        <a href="/" class="download-btn" style="padding: 12px 30px;">{{ t('empty_state_btn') }}</a>
+    </div>
+</div>
+{% endblock %}

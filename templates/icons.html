@@ -1,0 +1,324 @@
+{% macro render_icon(icon_type) %}
+{% if icon_type == 'chrome' %}
+    <!-- Google Chrome Icon (Dễ nhận biết, cách điệu) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#ffffff" />
+        <path d="M24,4 C14.1,4 5.9,11.2 4.3,20.7 L13.7,26.2 C14.6,20.8 19.3,17 25,17 L39.3,17 C36.9,9.4 29.7,4 24,4 Z" fill="#EA4335" />
+        <path d="M39.3,17 C42.2,21.5 43.1,27.1 41.5,32.5 C39,40.7 30.2,45.3 22,42.8 L12.6,37.3 L17.4,29 C20.3,31.5 24.5,31.7 27.6,29.4 C30.7,27.1 31.9,23.1 30.6,19.5 C30,17.9 28.9,16.5 27.5,15.6 L39.3,17 Z" fill="#FBBC05" />
+        <path d="M4.3,20.7 C3.2,26.1 4.4,31.7 7.7,36.2 C12.8,43.2 22.7,44.7 29.7,39.6 L24.9,31.3 C20.6,34.4 14.6,33.3 11.5,29 C9.7,26.5 9.2,23.4 10.1,20.5 L4.3,20.7 Z" fill="#34A853" />
+        <circle cx="24" cy="24" r="9" fill="#ffffff" />
+        <circle cx="24" cy="24" r="7" fill="#4285F4" />
+    </svg>
+{% elif icon_type == 'firefox' %}
+    <!-- Mozilla Firefox Icon (Cách điệu quả cầu xanh và cáo cam) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="20" fill="#3b5998" />
+        <path d="M24,4 C13,4 4,13 4,24 C4,35 13,44 24,44 C35,44 44,35 44,24 C44,13 35,4 24,4 Z" fill="url(#firefox-globe)" />
+        <path d="M38,15 C39,18 39,23 37,27 C34,33 27,37 20,36 C13,35 8,29 8,22 C8,15 13,8 20,8 C23,8 26,10 28,12 C25,12 22,14 21,17 C20,20 22,23 25,23 C28,23 30,20 30,17 C30,14 28,12 28,12 C33,12 37,13 38,15 Z" fill="url(#firefox-fox)" />
+        <defs>
+            <radialGradient id="firefox-globe" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#1E88E5" />
+                <stop offset="100%" stop-color="#1565C0" />
+            </radialGradient>
+            <linearGradient id="firefox-fox" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFB300" />
+                <stop offset="50%" stop-color="#FF6D00" />
+                <stop offset="100%" stop-color="#DD2C00" />
+            </linearGradient>
+        </defs>
+    </svg>
+{% elif icon_type == 'vscode' %}
+    <!-- Visual Studio Code Icon (Dải ruy băng đặc trưng) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#23A9F2" d="M34,4 L11,18 L3,14 L3,34 L11,30 L34,44 L41,40 L41,8 Z" />
+        <path fill="#0876C4" d="M11,18 L34,4 L41,8 L11,30 Z" />
+        <path fill="#04518C" d="M11,30 L41,40 L34,44 L11,18 Z" />
+        <path fill="#1F9CF0" d="M3,14 L11,18 L11,30 L3,34 Z" />
+    </svg>
+{% elif icon_type == 'python' %}
+    <!-- Python Icon (Hai con rắn đan xen) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#3776AB" d="M24,4 C17.3,4 17.8,6.9 17.8,6.9 L17.8,11.2 L24.3,11.2 L24.3,12.2 L15.2,12.2 C11.5,12.2 8.3,15.1 8.3,18.8 L8.3,24.8 C8.3,28.5 11.4,31.4 15.2,31.4 L17.2,31.4 L17.2,28.4 C17.2,24.7 20.3,21.6 24,21.6 L33.2,21.6 C36.9,21.6 37.8,18.5 37.8,14.8 L37.8,10.8 C37.8,7.1 34.6,4 30.9,4 L24,4 Z M21,7.5 C21.8,7.5 22.5,8.2 22.5,9 C22.5,9.8 21.8,10.5 21,10.5 C20.2,10.5 19.5,9.8 19.5,9 C19.5,8.2 20.2,7.5 21,7.5 Z" />
+        <path fill="#FFD343" d="M24,44 C30.7,44 30.2,41.1 30.2,41.1 L30.2,36.8 L23.7,36.8 L23.7,35.8 L32.8,35.8 C36.5,35.8 39.7,32.9 39.7,29.2 L39.7,23.2 C39.7,19.5 36.6,16.6 32.8,16.6 L30.8,16.6 L30.8,19.6 C30.8,23.3 27.7,26.4 24,26.4 L14.8,26.4 C11.1,26.4 10.2,29.5 10.2,33.2 L10.2,37.2 C10.2,40.9 13.4,44 17.1,44 L24,44 Z M27,40.5 C26.2,40.5 25.5,39.8 25.5,39 C25.5,38.2 26.2,37.5 27,37.5 C27.8,37.5 28.5,38.2 28.5,39 C28.5,39.8 27.8,40.5 27,40.5 Z" />
+    </svg>
+{% elif icon_type == 'git' %}
+    <!-- Git Icon (Hình thoi cam và các nhánh) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="7" width="34" height="34" rx="6" fill="#F05032" transform="rotate(45 24 24)" />
+        <circle cx="17" cy="24" r="3.5" fill="#ffffff" />
+        <circle cx="31" cy="18" r="3.5" fill="#ffffff" />
+        <circle cx="31" cy="30" r="3.5" fill="#ffffff" />
+        <path d="M17,24 L27,24 C29,24 31,22 31,18" stroke="#ffffff" stroke-width="3.5" fill="none" />
+        <path d="M25,24 L31,30" stroke="#ffffff" stroke-width="3.5" fill="none" />
+    </svg>
+{% elif icon_type == 'blender' %}
+    <!-- Blender Icon (Biểu tượng mắt cam/xanh lam đặc trưng) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M38,18 C33,12 24,12 18,17 C12,22 11,31 16,37 C21,43 30,43 35,38 L30,33 C27,35 22,35 19,32 C16,29 16,24 19,21 C22,18 27,18 30,21 L38,18 Z" fill="#E87D0D" />
+        <circle cx="28" cy="25" r="5" fill="#0056B3" />
+        <path d="M32,21 L42,15" stroke="#E87D0D" stroke-width="4" stroke-linecap="round" />
+        <path d="M30,25 L43,25" stroke="#E87D0D" stroke-width="4" stroke-linecap="round" />
+        <path d="M28,29 L38,38" stroke="#E87D0D" stroke-width="4" stroke-linecap="round" />
+    </svg>
+{% elif icon_type == 'vlc' %}
+    <!-- VLC Icon (Hình nón giao thông cam/trắng) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8,41 L40,41 L36,37 L12,37 Z" fill="#D35400" />
+        <path d="M12,37 L36,37 L33,31 L15,31 Z" fill="#E67E22" />
+        <path d="M15,31 L33,31 L31,25 L17,25 Z" fill="#ECEFF1" />
+        <path d="M17,25 L31,25 L28,17 L20,17 Z" fill="#E67E22" />
+        <path d="M20,17 L28,17 L26,11 L22,11 Z" fill="#ECEFF1" />
+        <path d="M22,11 L26,11 L24,5 Z" fill="#E67E22" />
+        <ellipse cx="24" cy="42" rx="18" ry="3" fill="#D35400" />
+    </svg>
+{% elif icon_type == 'winrar' %}
+    <!-- WinRAR Icon (Chồng sách ba màu xanh lá, xanh lam, đỏ có dây đai khóa) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <!-- Quyển sách xanh lá -->
+        <rect x="8" y="10" width="32" height="9" rx="2" fill="#2ECC71" />
+        <rect x="8" y="10" width="6" height="9" fill="#27AE60" />
+        <!-- Quyển sách xanh lam -->
+        <rect x="8" y="19" width="32" height="9" rx="2" fill="#3498DB" />
+        <rect x="8" y="19" width="6" height="9" fill="#2980B9" />
+        <!-- Quyển sách đỏ -->
+        <rect x="8" y="28" width="32" height="9" rx="2" fill="#E74C3C" />
+        <rect x="8" y="28" width="6" height="9" fill="#C0392B" />
+        <!-- Dây đai thắt lưng da -->
+        <rect x="22" y="7" width="5" height="34" fill="#795548" />
+        <!-- Khóa thắt lưng vàng -->
+        <rect x="20" y="20" width="9" height="6" rx="1" fill="#FFD54F" stroke="#E6EE9C" stroke-width="1" />
+    </svg>
+{% elif icon_type == 'steam' %}
+    <!-- Steam Icon (Cánh tay biên và khớp nối động cơ) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#171A21" />
+        <path d="M24,8 C17,8 11.5,12.5 10.2,19 L19.5,24.5 C20.2,22.5 22.2,21 24.5,21 C27.5,21 30,23.5 30,26.5 C30,29.5 27.5,32 24.5,32 L16.5,32 C15,32 13.5,31 13,29.5 L6,25 L6,38 C6,41.3 8.7,44 12,44 L36,44 C39.3,44 42,41.3 42,38 L42,14 C42,10.7 39.3,8 36,8 L24,8 Z" fill="#2A475E" />
+        <circle cx="24.5" cy="26.5" r="3.5" fill="#66C0F4" />
+    </svg>
+{% elif icon_type == 'discord' %}
+    <!-- Discord Icon (Clyde mascot trên nền xanh tím) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="42" height="42" rx="10" fill="#5865F2" />
+        <path d="M34.5,15 C32.1,13.5 29.5,12.6 26.8,12.2 C26.5,12.8 26.1,13.6 25.8,14.3 C23,13.9 20.2,13.9 17.4,14.3 C17.1,13.6 16.7,12.8 16.4,12.2 C13.7,12.6 11.1,13.5 8.7,15 C4,22 2.7,28.8 3.3,35.5 C6.4,37.8 9.5,39.2 12.5,40 C13.2,39 13.8,38 14.4,37 C13.3,36.6 12.3,36.1 11.3,35.5 C11.6,35.3 11.9,35 12.1,34.8 C18.2,37.6 24.8,37.6 30.9,34.8 C31.1,35 31.4,35.3 31.7,35.5 C30.7,36.1 29.7,36.6 28.6,37 C29.2,38 29.8,39 30.5,40 C33.5,39.2 36.6,37.8 39.7,35.5 C40.4,27.7 38.3,21 34.5,15 Z M15.5,30 C13.7,30 12.2,28.3 12.2,26.2 C12.2,24.1 13.7,22.4 15.5,22.4 C17.3,22.4 18.8,24.1 18.7,26.2 C18.7,28.3 17.3,30 15.5,30 Z M29.5,30 C27.7,30 26.2,28.3 26.2,26.2 C26.2,24.1 27.7,22.4 29.5,22.4 C31.3,22.4 32.8,24.1 32.8,26.2 C32.8,28.3 31.3,30 29.5,30 Z" fill="#ffffff" />
+    </svg>
+{% elif icon_type == 'gimp' %}
+    <!-- GIMP Icon (Cách điệu cọ vẽ và bảng pha màu) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M38,12 C32,6 22,6 16,12 C10,18 10,28 16,34 C22,40 32,40 38,34 C44,28 44,18 38,12 Z" fill="#E0F2F1" />
+        <circle cx="22" cy="18" r="3" fill="#FF5722" />
+        <circle cx="30" cy="22" r="4" fill="#E91E63" />
+        <circle cx="20" cy="28" r="3.5" fill="#9C27B0" />
+        <circle cx="28" cy="30" r="2.5" fill="#4CAF50" />
+        <!-- Cọ vẽ quét sơn -->
+        <path d="M34,14 L42,6 L44,8 L36,16 Z" fill="#795548" />
+        <rect x="34" y="12" width="4" height="4" fill="#BCAAA4" transform="rotate(45 36 14)" />
+    </svg>
+{% elif icon_type == 'ccleaner' %}
+    <!-- CCleaner Icon (Chữ C đỏ và chổi quét bụi màu lam) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M36,14 C33,10 28,8 22,8 C12,8 5,15 5,24 C5,33 12,40 22,40 C28,40 33,38 36,34 L30,30 C28,32 25,33 22,33 C17,33 13,29 13,24 C13,19 17,15 22,15 C25,15 28,16 30,18 L36,14 Z" fill="#E74C3C" />
+        <path d="M22,20 L38,20 L40,24 L24,24 Z" fill="#3498DB" />
+        <path d="M26,24 L42,24 L44,29 L28,29 Z" fill="#2980B9" />
+        <path d="M22,20 L24,29" stroke="#E67E22" stroke-width="2" />
+    </svg>
+{% elif icon_type == 'malwarebytes' %}
+    <!-- Malwarebytes Icon (Ký tự M cách điệu dạng hình chiếc khiên bảo vệ) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24,4 L6,10 L6,22 C6,33 13,42 24,45 C35,42 42,33 42,22 L42,10 L24,4 Z" fill="#0056B3" />
+        <path d="M24,8 L38,13 L38,22 C38,30.5 32.5,38 24,40.5 C15.5,38 10,30.5 10,22 L10,13 L24,8 Z" fill="#00A2E8" />
+        <path d="M16,18 L20,18 L24,26 L28,18 L32,18 L26,30 L22,30 Z" fill="#ffffff" />
+    </svg>
+{% elif icon_type == 'notepadpp' %}
+    <!-- Notepad++ Icon (Tờ giấy và con tắc kè hoa xanh lá) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="6" width="28" height="36" rx="3" fill="#ECEFF1" stroke="#37474F" stroke-width="2" />
+        <path d="M12,12 L24,12" stroke="#B0BEC5" stroke-width="2" />
+        <path d="M12,18 L32,18" stroke="#B0BEC5" stroke-width="2" />
+        <path d="M12,24 L32,24" stroke="#B0BEC5" stroke-width="2" />
+        <path d="M12,30 L26,30" stroke="#B0BEC5" stroke-width="2" />
+        <!-- Tắc kè hoa bò trên giấy -->
+        <path d="M26,16 C22,16 19,19 19,23 C19,27 22,29 25,29 C25,31 24,33 22,34 C24,35 28,34 29,31 C32,31 34,29 34,25 C34,20 31,16 26,16 Z" fill="#4CAF50" />
+        <circle cx="28" cy="21" r="1.5" fill="#ffffff" />
+        <circle cx="28" cy="21" r="0.7" fill="#000000" />
+        <path d="M24,25 L16,33" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" />
+        <path d="M28,26 L22,36" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" />
+    </svg>
+{% elif icon_type == 'zoom' %}
+    <!-- Zoom Icon (Hình vuông bo góc màu xanh lam với máy quay camera trắng) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="12" fill="#2D8CFF" />
+        <path d="M12,18 C12,15.8 13.8,14 16,14 L26,14 C28.2,14 30,15.8 30,18 L30,26 C30,28.2 28.2,30 26,30 L16,30 C13.8,30 12,28.2 12,26 L12,18 Z" fill="#ffffff" />
+        <path d="M31,20 L37,16 L37,28 L31,24 Z" fill="#ffffff" />
+    </svg>
+{% elif icon_type == 'vmware' %}
+    <!-- VMware Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="8" width="16" height="16" rx="2" fill="#E67E22" />
+        <rect x="24" y="24" width="16" height="16" rx="2" fill="#34495E" />
+        <rect x="24" y="8" width="16" height="16" rx="2" fill="#7F8C8D" />
+        <rect x="8" y="24" width="16" height="16" rx="2" fill="#95A5A6" />
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#ffffff" stroke-width="2" />
+        <line x1="8" y1="24" x2="40" y2="24" stroke="#ffffff" stroke-width="2" />
+    </svg>
+{% elif icon_type == 'virtualbox' %}
+    <!-- VirtualBox Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#1867C0" />
+        <path d="M24,10 L36,17 L36,31 L24,38 L12,31 L12,17 Z" fill="#ffffff" opacity="0.3" />
+        <path d="M24,10 L36,17 L24,24 L12,17 Z" fill="#90CAF9" />
+        <path d="M12,17 L24,24 L24,38 L12,31 Z" fill="#42A5F5" />
+        <path d="M24,24 L36,17 L36,31 L24,38 Z" fill="#1E88E5" />
+    </svg>
+{% elif icon_type == 'teamviewer' %}
+    <!-- TeamViewer Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#0080FF" />
+        <circle cx="24" cy="24" r="14" fill="#ffffff" />
+        <path d="M16,24 L32,24" stroke="#0080FF" stroke-width="4" stroke-linecap="round" />
+        <path d="M20,20 L16,24 L20,28" stroke="#0080FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        <path d="M28,20 L32,24 L28,28" stroke="#0080FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    </svg>
+{% elif icon_type == 'ultraviewer' %}
+    <!-- UltraViewer Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#0D47A1" />
+        <path d="M12,16 H36 V28 H12 Z" fill="#ffffff" />
+        <path d="M16,20 H32 V26 H16 Z" fill="#0D47A1" />
+        <path d="M20,28 L18,34 H30 L28,28 Z" fill="#ffffff" />
+        <path d="M24,21 L28,25 H20 Z" fill="#ffffff" />
+    </svg>
+{% elif icon_type == 'xampp' %}
+    <!-- XAMPP Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#3E2723" />
+        <path d="M24,6 A18,18 0 0 1 42,24 H30 A6,6 0 0 0 24,18 Z" fill="#FF6D00" />
+        <path d="M42,24 A18,18 0 0 1 24,42 V30 A6,6 0 0 0 30,24 Z" fill="#FFD600" />
+        <path d="M24,42 A18,18 0 0 1 6,24 H18 A6,6 0 0 0 24,30 Z" fill="#00E676" />
+        <path d="M6,24 A18,18 0 0 1 24,6 V18 A6,6 0 0 0 18,24 Z" fill="#29B6F6" />
+    </svg>
+{% elif icon_type == 'unikey' %}
+    <!-- UniKey Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="10" fill="#D32F2F" />
+        <path d="M14,14 V26 C14,31.5 18.5,34 24,34 C29.5,34 34,31.5 34,26 V14" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+        <path d="M24,24 L31,14 M24,24 L32,32" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+    </svg>
+{% elif icon_type == 'brave' %}
+    <!-- Brave Browser Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#ffffff" />
+        <path d="M24,4 L36,12 L32,24 L24,20 L16,24 L12,12 Z" fill="#FF5A00" />
+        <path d="M24,20 L30,34 L24,44 L18,34 Z" fill="#E64A19" />
+        <circle cx="20" cy="14" r="2" fill="#FFE082" />
+        <circle cx="28" cy="14" r="2" fill="#FFE082" />
+        <path d="M24,4 L24,20" stroke="#d84315" stroke-width="1.5" />
+        <path d="M12,12 L24,20 L36,12" fill="none" stroke="#d84315" stroke-width="1.5" />
+    </svg>
+{% elif icon_type == 'windows' %}
+    <!-- Windows Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5,12.5 L21,10.2 V22.8 H5 Z" fill="#0078D7" />
+        <path d="M23,9.8 L43,7 V22.8 H23 Z" fill="#0078D7" />
+        <path d="M5,25.2 H21 V37.8 L5,35.5 Z" fill="#0078D7" />
+        <path d="M23,25.2 H43 V41 L23,38.2 Z" fill="#0078D7" />
+    </svg>
+{% elif icon_type == 'ubuntu' %}
+    <!-- Ubuntu Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#E95420" />
+        <circle cx="24" cy="24" r="13" fill="none" stroke="#ffffff" stroke-width="4.5" />
+        <circle cx="24" cy="11" r="3.5" fill="#E95420" />
+        <circle cx="12.7" cy="30.5" r="3.5" fill="#E95420" />
+        <circle cx="35.3" cy="30.5" r="3.5" fill="#E95420" />
+        <circle cx="24" cy="11" r="2.5" fill="#ffffff" />
+        <circle cx="12.7" cy="30.5" r="2.5" fill="#ffffff" />
+        <circle cx="35.3" cy="30.5" r="2.5" fill="#ffffff" />
+    </svg>
+{% elif icon_type == 'kali' %}
+    <!-- Kali Linux Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#0F172A" />
+        <path d="M12,24 C12,18 16,14 24,14 C30,14 34,18 36,24 C34,22 30,20 24,20 C18,20 14,22 12,24 Z" fill="#2E90FF" opacity="0.8" />
+        <path d="M22,10 L26,14 L30,12 L28,16 L32,18 L27,20 L28,26 L23,21 L18,24 L20,18 Z" fill="#00EBFF" />
+    </svg>
+{% elif icon_type == 'visualstudio' %}
+    <!-- Visual Studio Icon (Purple infinity-like loop) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#9C27B0" d="M34,4 L11,18 L3,14 L3,34 L11,30 L34,44 L41,40 L41,8 Z" />
+        <path fill="#7B1FA2" d="M11,18 L34,4 L41,8 L11,30 Z" />
+        <path fill="#4A148C" d="M11,30 L41,40 L34,44 L11,18 Z" />
+        <path fill="#BA68C8" d="M3,14 L11,18 L11,30 L3,34 Z" />
+    </svg>
+{% elif icon_type == 'cursor' %}
+    <!-- Cursor AI Editor Icon (Stylized cursor arrow with AI sparkles) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="10" fill="#0B0F19" />
+        <path d="M16,12 L32,24 L24,26 L30,36 L26,38 L20,28 L16,32 Z" fill="#00E5FF" />
+        <!-- AI Sparkle stars -->
+        <path d="M34,12 L35.5,15 L38.5,15.5 L36,17.5 L37,20.5 L34,19 L31,20.5 L32,17.5 L29.5,15.5 L32.5,15 Z" fill="#06B6D4" />
+        <path d="M14,32 L14.7,33.5 L16.2,33.7 L15,34.7 L15.5,36.2 L14,35.5 L12.5,36.2 L13,34.7 L11.8,33.7 L13.3,33.5 Z" fill="#3B82F6" />
+    </svg>
+{% elif icon_type == 'docker' %}
+    <!-- Docker Icon (Blue whale with cargo containers) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6,22 C8,22 10,24 10,26 C10,28 8,30 6,30 C4,30 2,28 2,26 C2,24 4,22 6,22 Z" fill="#0db7ed" />
+        <path d="M14,14 H20 V20 H14 Z M22,14 H28 V20 H22 Z M30,14 H36 V20 H30 Z" fill="#0db7ed" />
+        <path d="M18,8 H24 V14 H18 Z M26,8 H32 V14 H26 Z" fill="#0db7ed" />
+        <path d="M10,26 C10,32 16,36 24,36 C32,36 38,32 40,26 C42,26 44,28 44,30 C44,32 42,34 38,34 C36,36 30,38 24,38 C14,38 8,34 6,28 C5,27 7,26 10,26 Z" fill="#0db7ed" />
+        <path d="M40,26 C38,20 34,18 30,18 C30,22 34,24 40,26 Z" fill="#0db7ed" />
+    </svg>
+{% elif icon_type == 'nodejs' %}
+    <!-- Node.js Icon (Green hexagon and text-like structure) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24,4 L40,13.2 L40,34.8 L24,44 L8,34.8 L8,13.2 Z" fill="#339933" />
+        <path d="M24,8 L36,15 L36,33 L24,40 L12,33 L12,15 Z" fill="#43853D" />
+        <path d="M24,14 L30,17.5 L30,24 L24,20.5 L18,24 L18,17.5 Z" fill="#ffffff" />
+    </svg>
+{% elif icon_type == 'intellij' %}
+    <!-- IntelliJ IDEA Icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="40" height="40" rx="8" fill="url(#intellij-grad)" />
+        <rect x="10" y="10" width="28" height="28" rx="2" fill="#000000" />
+        <text x="14" y="26" fill="#ffffff" font-family="monospace" font-size="14" font-weight="bold">II</text>
+        <rect x="14" y="28" width="16" height="3" fill="#FE2857" />
+        <defs>
+            <linearGradient id="intellij-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FE2857" />
+                <stop offset="50%" stop-color="#FE8235" />
+                <stop offset="100%" stop-color="#C2185B" />
+            </linearGradient>
+        </defs>
+    </svg>
+{% elif icon_type == 'antigravity' %}
+    <!-- Antigravity AI Icon (Quả cầu lượng tử bay lơ lửng giữa các vòng quỹ đạo neon phát sáng) -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="44" height="44" rx="12" fill="#090D1A" />
+        <!-- Vòng quỹ đạo phía sau -->
+        <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="#8B5CF6" stroke-width="2.5" opacity="0.6" transform="rotate(-30 24 24)" />
+        <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="#EC4899" stroke-width="2" opacity="0.4" transform="rotate(30 24 24)" />
+        <!-- Quả cầu trung tâm sáng rực -->
+        <circle cx="24" cy="20" r="8" fill="url(#antigravity-core)" />
+        <!-- Vòng quỹ đạo phía trước che một phần quả cầu -->
+        <ellipse cx="24" cy="24" rx="18" ry="6" fill="none" stroke="#3B82F6" stroke-width="3" transform="rotate(-30 24 24)" stroke-dasharray="24 16" />
+        <!-- Sparkles lượng tử -->
+        <circle cx="12" cy="12" r="1.5" fill="#00E5FF" />
+        <circle cx="36" cy="36" r="1.5" fill="#00E5FF" />
+        <circle cx="38" cy="14" r="2" fill="#FF007F" />
+        <circle cx="10" cy="34" r="2" fill="#8B5CF6" />
+        <defs>
+            <radialGradient id="antigravity-core" cx="40%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#00E5FF" />
+                <stop offset="40%" stop-color="#3B82F6" />
+                <stop offset="80%" stop-color="#8B5CF6" />
+                <stop offset="100%" stop-color="#090D1A" />
+            </radialGradient>
+        </defs>
+    </svg>
+{% else %}
+    <!-- Fallback default app icon -->
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="6" width="36" height="36" rx="8" fill="#1E293B" stroke="var(--primary-color)" stroke-width="2"/>
+        <path d="M16,24 L32,24 M24,16 L24,32" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+{% endif %}
+{% endmacro %}

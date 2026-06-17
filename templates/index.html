@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ t('title') }}{% endblock %}
+
+{% block content %}
+{% from 'icons.html' import render_icon %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1 class="hero-title">{{ t('hero_title_1') }} <span>{{ t('hero_title_2') }}</span></h1>
+    <p class="hero-subtitle">{{ t('hero_subtitle') }}</p>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form action="/" method="GET" class="search-box">
+            <input type="text" name="q" placeholder="{{ t('search_placeholder') }}" value="{{ search_query or '' }}">
+            <!-- Giữ nguyên category hiện tại nếu có -->
+            {% if selected_category and selected_category != 'all' %}
+                <input type="hidden" name="category" value="{{ selected_category }}">
+            {% endif %}
+            <button type="submit">{{ t('search_btn') }}</button>
+        </form>
+    </div>
+</section>
+
+<div class="main-wrapper">
+    <!-- Category Tabs Filter -->
+    <div class="category-tabs">
+        {% for cat_slug, cat_name in CATEGORIES.items() %}
+            <a href="/?category={{ cat_slug }}{% if search_query %}&q={{ search_query }}{% endif %}" 
+               class="tab-btn {% if selected_category == cat_slug %}active{% endif %}">
+                {{ cat_name }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <!-- Software Grid -->
+    {% if softwares %}
+        <div class="app-grid">
+            {% for sw in softwares %}
+                <div class="app-card" data-category="{{ sw.category }}">
+                    <div>
+                        <!-- Top header of card -->
+                        <div class="app-card-top">
+                            <div class="app-icon">
+                                {{ render_icon(sw.icon_type) }}
+                            </div>
+                            
+                            <div class="app-info-header">
+                                <h3 class="app-name">
+                                    <a href="{{ url_for('detail', slug=sw.slug) }}">{{ sw.name }}</a>
+                                </h3>
+                                <div class="app-developer">{{ sw.developer }}</div>
+                                {% if sw.versions %}
+                                    <div class="version-select-wrapper" style="margin-top: 4px;">
+                                        <select class="card-version-select" data-slug="{{ sw.slug }}">
+                                            {% for v in sw.versions %}
+                                                <option value="{{ v.version }}" data-size="{{ v.file_size }}" style="background: var(--bg-card); color: var(--text-main);">v{{ v.version }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                {% else %}
+                                    <span class="app-version">v{{ sw.version }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="app-description">{{ t_sw(sw, 'description') }}</p>
+                    </div>
+
+                    <!-- Bottom actions of card -->
+                    <div class="app-card-bottom">
+                        <div class="app-metadata">
+                            <span>{{ t('size') }}: <strong class="card-file-size">{{ sw.file_size }}</strong></span>
+                            <span>{{ t('downloads') }}: <strong class="download-count-val">{{ sw.download_count }}</strong></span>
+                        </div>
+                        
+                        <!-- Nút tải trực tiếp 1-click -->
+                        <a href="{{ url_for('download', slug=sw.slug) }}" 
+                           class="download-btn" 
+                           data-app-id="{{ sw.id }}">
+                            <span class="btn-txt">{{ t('download_btn') }}</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Khung kết quả tìm kiếm trống khi tìm kiếm động bằng JS -->
+        <div id="noResults" class="empty-state" style="display: none; margin-top: 30px;">
+            <div class="empty-state-icon">🔍</div>
+            <h3>{{ t('empty_state_title') }}</h3>
+            <p style="color: var(--text-muted); font-size: 14px; max-width: 500px; margin: 0 auto 24px auto;">
+                {{ t('empty_state_desc') }}
+            </p>
+        </div>
+    {% else %}
+        <!-- Trạng thái trống khi không tìm thấy phần mềm -->
+        <div class="empty-state">
+            <div class="empty-state-icon">🔍</div>
+            <h3>{{ t('empty_state_title') }}</h3>
+            <p style="color: var(--text-muted); font-size: 14px; max-width: 500px; margin: 0 auto 24px auto;">
+                {{ t('empty_state_desc_query', query=search_query) }}
+            </p>
+            <a href="/" class="tab-btn active" style="display: inline-block;">{{ t('empty_state_btn') }}</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
