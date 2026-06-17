@@ -377,9 +377,17 @@ def create_app():
     def internal_server_error(e):
         return render_template('500.html'), 500
 
-    # Khởi tạo bảng dữ liệu
+    # Khởi tạo bảng dữ liệu và tự động seed nếu trống
     with app.app_context():
         db.create_all()
+        try:
+            if Software.query.first() is None:
+                from init_db import seed_database
+                # Seed dữ liệu mà không xóa bảng (drop_tables=False)
+                seed_database(app, drop_tables=False)
+                print("Tự động seed dữ liệu thành công trên môi trường mới!")
+        except Exception as e:
+            print(f"Lỗi kiểm tra/seed dữ liệu tự động: {e}")
         
     return app
 

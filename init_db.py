@@ -1,13 +1,16 @@
-from app import create_app
 from models import db, Software, SoftwareVersion
 
-app = create_app()
-
-def seed_database():
+def seed_database(app=None, drop_tables=True):
+    if app is None:
+        from app import create_app
+        app = create_app()
+        
     with app.app_context():
-        # Làm sạch cơ sở dữ liệu và tạo bảng mới
-        db.drop_all()
-        db.create_all()
+        if drop_tables:
+            db.drop_all()
+            db.create_all()
+        else:
+            db.create_all()
         
         print("Đang nạp danh sách phần mềm PC vào cơ sở dữ liệu...")
         
@@ -614,4 +617,4 @@ def seed_database():
         print("Đã nạp toàn bộ dữ liệu phần mềm, ứng dụng mới và các phiên bản thành công!")
 
 if __name__ == '__main__':
-    seed_database()
+    seed_database(drop_tables=True)
